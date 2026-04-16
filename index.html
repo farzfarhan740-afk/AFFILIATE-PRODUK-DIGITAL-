@@ -8,107 +8,78 @@
 <style>
 body {
   margin:0;
-  font-family: 'Arial';
+  font-family:Arial;
   background:#0f0f0f;
   color:white;
-  overflow-x:hidden;
 }
 
+/* CONTAINER */
 .container {
   max-width:420px;
   margin:auto;
   padding:20px;
-  transition:0.4s;
+}
+
+/* HEADER */
+h1 {
+  text-align:center;
+}
+
+/* CARD */
+.card {
+  background:#1a1a1a;
+  border-radius:15px;
+  padding:15px;
+  margin:15px 0;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+/* ICON */
+.icon {
+  font-size:40px;
+}
+
+/* TEXT */
+.text h3 {
+  margin:0;
+}
+
+.text p {
+  margin:5px 0;
+  font-size:13px;
+  color:#aaa;
+}
+
+/* BUTTON UNGU */
+.btn {
+  margin-top:10px;
+  display:inline-block;
+  background:linear-gradient(45deg,#7b2cff,#b84dff);
+  padding:10px 15px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
 }
 
 /* PAGE */
 .page {display:none;}
-.active {display:block; animation:fade 0.4s;}
-
-@keyframes fade {
-  from {opacity:0; transform:translateY(10px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* BUTTON */
-.btn {
-  display:block;
-  background:linear-gradient(45deg,#ff0050,#ff7a00);
-  padding:15px;
-  margin:10px 0;
-  border-radius:12px;
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
-  position:relative;
-  overflow:hidden;
-}
-
-/* RIPPLE */
-.btn:after {
-  content:"";
-  position:absolute;
-  width:0;
-  height:0;
-  background:rgba(255,255,255,0.4);
-  border-radius:50%;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  transition:0.5s;
-}
-
-.btn:active:after {
-  width:200px;
-  height:200px;
-}
+.active {display:block;}
 
 /* BACK */
 .back {
-  margin-top:20px;
   display:block;
-  color:#ff7a00;
+  margin-top:20px;
+  color:#b84dff;
   text-decoration:none;
 }
 
-/* NAVBAR BAWAH */
-.navbar {
-  position:fixed;
-  bottom:0;
-  width:100%;
-  max-width:420px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#1a1a1a;
-  display:flex;
-  justify-content:space-around;
-  padding:10px 0;
-  border-top:1px solid #333;
-}
-
-.navbar div {
-  cursor:pointer;
-  font-size:12px;
-}
-
-/* POPUP */
-.popup {
-  position:fixed;
-  bottom:70px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#ff0050;
-  padding:10px 20px;
-  border-radius:20px;
-  display:none;
-  font-size:12px;
-}
-
-/* VIDEO */
-video {
-  width:100%;
-  border-radius:12px;
-  margin-bottom:10px;
+/* ANIMASI */
+.card:hover {
+  transform:scale(1.03);
+  transition:0.3s;
 }
 </style>
 </head>
@@ -117,25 +88,47 @@ video {
 
 <!-- HOME -->
 <div id="home" class="container active page">
-  <h2>🔥 Affiliate Produk Digital</h2>
-  <p>Cuan dari HP tanpa modal</p>
+  <h1>💜 Affiliate Produk Digital</h1>
 
-  <video autoplay muted loop>
-    <source src="video.mp4" type="video/mp4">
-  </video>
+  <div class="card" onclick="showPage('ebook')">
+    <div class="icon">📚</div>
+    <div class="text">
+      <h3>Ebook Affiliate</h3>
+      <p>Belajar cuan dari nol</p>
+    </div>
+  </div>
 
-  <div class="btn" onclick="showPage('ebook')">📦 Ebook</div>
-  <div class="btn" onclick="showPage('template')">🎥 Template</div>
-  <div class="btn" onclick="showPage('tools')">🤖 Tools AI</div>
+  <div class="card" onclick="showPage('template')">
+    <div class="icon">🎬</div>
+    <div class="text">
+      <h3>Template TikTok</h3>
+      <p>Konten auto viral</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showPage('tools')">
+    <div class="icon">🤖</div>
+    <div class="text">
+      <h3>Tools AI</h3>
+      <p>Kerja 10x lebih cepat</p>
+    </div>
+  </div>
 </div>
 
 <!-- EBOOK -->
 <div id="ebook" class="container page">
-  <h2>📦 Ebook Cuan</h2>
-  <p>Belajar sampai hasil uang</p>
+  <h1>📚 Ebook Affiliate</h1>
+  <p>Buku digital untuk belajar affiliate marketing</p>
 
-  <div class="btn" onclick="goLink('https://shopee.co.id/')">
-    🔥 Beli Sekarang
+  <div class="card">
+    <div class="icon">📖</div>
+    <div class="text">
+      <h3>Ebook Cuan Affiliate</h3>
+      <p>Sudah dipakai banyak orang</p>
+      <a class="btn" href="https://shopee.co.id/search?keyword=ebook%20affiliate" target="_blank">
+        🔥 Lihat Buku di Shopee
+      </a>
+    </div>
   </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
@@ -143,11 +136,18 @@ video {
 
 <!-- TEMPLATE -->
 <div id="template" class="container page">
-  <h2>🎥 Template TikTok</h2>
-  <p>Bikin konten auto FYP</p>
+  <h1>🎬 Template TikTok</h1>
+  <p>Template siap pakai biar cepat viral</p>
 
-  <div class="btn" onclick="goLink('https://www.tiktok.com/')">
-    🔥 Lihat Produk
+  <div class="card">
+    <div class="icon">🎥</div>
+    <div class="text">
+      <h3>Template Viral</h3>
+      <p>Langsung pakai tanpa edit ribet</p>
+      <a class="btn" href="https://www.tiktok.com/" target="_blank">
+        🔥 Lihat Template
+      </a>
+    </div>
   </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
@@ -155,45 +155,28 @@ video {
 
 <!-- TOOLS -->
 <div id="tools" class="container page">
-  <h2>🤖 Tools AI</h2>
-  <p>Kerja 10x lebih cepat</p>
+  <h1>🤖 Tools AI</h1>
+  <p>Tools untuk bantu kerja & konten</p>
 
-  <div class="btn" onclick="goLink('#')">
-    🔥 Coba Sekarang
+  <div class="card">
+    <div class="icon">💻</div>
+    <div class="text">
+      <h3>AI Tools Premium</h3>
+      <p>Dipakai creator sukses</p>
+      <a class="btn" href="#" target="_blank">
+        🔥 Coba Tools
+      </a>
+    </div>
   </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div onclick="showPage('home')">Home</div>
-  <div onclick="showPage('ebook')">Ebook</div>
-  <div onclick="showPage('template')">Template</div>
-  <div onclick="showPage('tools')">Tools</div>
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">🔥 1 orang baru saja beli!</div>
-
 <script>
-function showPage(page) {
-  document.querySelectorAll('.page').forEach(el => {
-    el.classList.remove('active');
-  });
+function showPage(page){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
   document.getElementById(page).classList.add('active');
 }
-
-function goLink(url){
-  window.open(url, "_blank");
-}
-
-/* POPUP */
-setInterval(()=>{
-  let p = document.getElementById("popup");
-  p.style.display="block";
-  setTimeout(()=>{p.style.display="none";},3000);
-},7000);
 </script>
 
 </body>
