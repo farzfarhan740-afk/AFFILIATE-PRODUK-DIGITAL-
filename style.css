@@ -19,3 +19,14 @@ button {
     border: none;
     border-radius: 5px;
 }
+.nav {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  color: #ff7a00;
+  margin: 0 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
