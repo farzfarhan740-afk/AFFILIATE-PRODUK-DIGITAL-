@@ -5,189 +5,104 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Affiliate Produk Digital</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
-  color: white;
+  margin:0;
+  font-family:Arial;
+  background:#0f0f0f;
+  color:white;
+  text-align:center;
 }
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="ebook.html">Ebook</a>
-  <a href="template.html">Template</a>
-  <a href="tools.html">Tools AI</a>
-</div>
-/* CONTAINER */
+
 .container {
-  max-width: 420px;
-  margin: auto;
-  padding: 20px;
+  max-width:400px;
+  margin:auto;
+  padding:20px;
 }
 
-/* HEADER */
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.header p {
-  color: #aaa;
-  font-size: 14px;
-}
-
-/* VIDEO */
-.video-preview {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-/* CARD */
-.card {
-  background: #1a1a1a;
-  border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 15px;
-  transition: 0.3s;
-  box-shadow: 0 0 15px rgba(255,0,80,0.2);
-}
-
-.card:hover {
-  transform: scale(1.04);
-}
-
-/* BUTTON */
 .btn {
-  position: relative;
-  display: block;
-  text-align: center;
-  background: linear-gradient(45deg, #ff0050, #ff7a00);
-  padding: 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  margin-top: 10px;
-  overflow: hidden;
+  display:block;
+  background:linear-gradient(45deg,#ff0050,#ff7a00);
+  padding:15px;
+  margin:10px 0;
+  border-radius:12px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
 }
 
-/* RIPPLE EFFECT */
-.btn::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  background: rgba(255,255,255,0.4);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  transition: width 0.5s, height 0.5s;
+.page {
+  display:none;
 }
 
-.btn:active::after {
-  width: 200px;
-  height: 200px;
+.active {
+  display:block;
 }
 
-/* TESTIMONI */
-.testimoni {
-  font-size: 13px;
-  color: #ccc;
-}
-
-/* CTA */
-.cta {
-  text-align: center;
-  margin-top: 25px;
-  font-weight: bold;
-  color: #ff7a00;
-}
-
-/* POPUP */
-.popup {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ff0050;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: none;
-  font-size: 13px;
-}
-
-/* ANIMATION */
-.fade-in {
-  animation: fade 1s ease-in;
-}
-
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.back {
+  margin-top:20px;
+  display:block;
+  color:#ff7a00;
+  text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container fade-in">
-
-<div class="header">
+<!-- HOME -->
+<div id="home" class="container active">
   <h1>🔥 Affiliate Produk Digital</h1>
-  <p>Cuan dari HP Tanpa Modal</p>
+  <p>Pilih produk terbaik</p>
+
+  <a class="btn" onclick="showPage('ebook')">📦 Ebook</a>
+  <a class="btn" onclick="showPage('template')">🎥 Template</a>
+  <a class="btn" onclick="showPage('tools')">🤖 Tools AI</a>
 </div>
 
-<video class="video-preview" autoplay muted loop controls>
-  <source src="video.mp4" type="video/mp4">
-</video>
+<!-- EBOOK -->
+<div id="ebook" class="container page">
+  <h1>📦 Ebook Cuan</h1>
+  <p>Belajar sampai bisa hasil uang</p>
 
-<div class="card">
-  <h3>📦 Ebook Cuan Online</h3>
-  <p>Belajar dari nol sampai hasil</p>
-  <div class="testimoni">⭐ 4.9 | 1000+ pembeli</div>
-  <a class="btn" href="https://shopee.co.id/" target="_blank">Beli Sekarang</a>
+  <a class="btn" href="https://shopee.co.id/" target="_blank">
+    🔥 Beli Sekarang
+  </a>
+
+  <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
-<div class="card">
-  <h3>🎥 Template TikTok Viral</h3>
+<!-- TEMPLATE -->
+<div id="template" class="container page">
+  <h1>🎥 Template TikTok</h1>
   <p>Bikin konten auto FYP</p>
-  <div class="testimoni">🔥 Lagi viral sekarang</div>
-  <a class="btn" href="https://www.tiktok.com/" target="_blank">Lihat Produk</a>
+
+  <a class="btn" href="https://www.tiktok.com/" target="_blank">
+    🔥 Lihat Produk
+  </a>
+
+  <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
-<div class="card">
-  <h3>🤖 Tools AI Premium</h3>
-  <p>Upgrade kerja 10x lebih cepat</p>
-  <div class="testimoni">💰 Dipakai creator sukses</div>
-  <a class="btn" href="#">Coba Sekarang</a>
-</div>
+<!-- TOOLS -->
+<div id="tools" class="container page">
+  <h1>🤖 Tools AI</h1>
+  <p>Kerja lebih cepat pakai AI</p>
 
-<div class="cta">
-⚡ Promo terbatas, klik sekarang sebelum kehabisan
-</div>
+  <a class="btn" href="#">
+    🔥 Coba Sekarang
+  </a>
 
+  <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
-
-<div class="popup" id="popup">🔥 1 Orang baru saja beli!</div>
 
 <script>
-// POPUP RANDOM
-setInterval(() => {
-  let popup = document.getElementById("popup");
-  popup.style.display = "block";
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 3000);
-}, 7000);
+function showPage(page) {
+  document.querySelectorAll('.container').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.getElementById(page).classList.add('active');
+}
 </script>
 
 </body>
