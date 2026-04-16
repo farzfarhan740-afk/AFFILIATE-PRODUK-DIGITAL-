@@ -8,18 +8,29 @@
 <style>
 body {
   margin:0;
-  font-family:Arial;
+  font-family: 'Arial';
   background:#0f0f0f;
   color:white;
-  text-align:center;
+  overflow-x:hidden;
 }
 
 .container {
-  max-width:400px;
+  max-width:420px;
   margin:auto;
   padding:20px;
+  transition:0.4s;
 }
 
+/* PAGE */
+.page {display:none;}
+.active {display:block; animation:fade 0.4s;}
+
+@keyframes fade {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* BUTTON */
 .btn {
   display:block;
   background:linear-gradient(45deg,#ff0050,#ff7a00);
@@ -29,21 +40,75 @@ body {
   text-decoration:none;
   color:white;
   font-weight:bold;
+  position:relative;
+  overflow:hidden;
 }
 
-.page {
-  display:none;
+/* RIPPLE */
+.btn:after {
+  content:"";
+  position:absolute;
+  width:0;
+  height:0;
+  background:rgba(255,255,255,0.4);
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  transition:0.5s;
 }
 
-.active {
-  display:block;
+.btn:active:after {
+  width:200px;
+  height:200px;
 }
 
+/* BACK */
 .back {
   margin-top:20px;
   display:block;
   color:#ff7a00;
   text-decoration:none;
+}
+
+/* NAVBAR BAWAH */
+.navbar {
+  position:fixed;
+  bottom:0;
+  width:100%;
+  max-width:420px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#1a1a1a;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  border-top:1px solid #333;
+}
+
+.navbar div {
+  cursor:pointer;
+  font-size:12px;
+}
+
+/* POPUP */
+.popup {
+  position:fixed;
+  bottom:70px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff0050;
+  padding:10px 20px;
+  border-radius:20px;
+  display:none;
+  font-size:12px;
+}
+
+/* VIDEO */
+video {
+  width:100%;
+  border-radius:12px;
+  margin-bottom:10px;
 }
 </style>
 </head>
@@ -51,58 +116,84 @@ body {
 <body>
 
 <!-- HOME -->
-<div id="home" class="container active">
-  <h1>🔥 Affiliate Produk Digital</h1>
-  <p>Pilih produk terbaik</p>
+<div id="home" class="container active page">
+  <h2>🔥 Affiliate Produk Digital</h2>
+  <p>Cuan dari HP tanpa modal</p>
 
-  <a class="btn" onclick="showPage('ebook')">📦 Ebook</a>
-  <a class="btn" onclick="showPage('template')">🎥 Template</a>
-  <a class="btn" onclick="showPage('tools')">🤖 Tools AI</a>
+  <video autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div class="btn" onclick="showPage('ebook')">📦 Ebook</div>
+  <div class="btn" onclick="showPage('template')">🎥 Template</div>
+  <div class="btn" onclick="showPage('tools')">🤖 Tools AI</div>
 </div>
 
 <!-- EBOOK -->
 <div id="ebook" class="container page">
-  <h1>📦 Ebook Cuan</h1>
-  <p>Belajar sampai bisa hasil uang</p>
+  <h2>📦 Ebook Cuan</h2>
+  <p>Belajar sampai hasil uang</p>
 
-  <a class="btn" href="https://shopee.co.id/" target="_blank">
+  <div class="btn" onclick="goLink('https://shopee.co.id/')">
     🔥 Beli Sekarang
-  </a>
+  </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
 <!-- TEMPLATE -->
 <div id="template" class="container page">
-  <h1>🎥 Template TikTok</h1>
+  <h2>🎥 Template TikTok</h2>
   <p>Bikin konten auto FYP</p>
 
-  <a class="btn" href="https://www.tiktok.com/" target="_blank">
+  <div class="btn" onclick="goLink('https://www.tiktok.com/')">
     🔥 Lihat Produk
-  </a>
+  </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
 <!-- TOOLS -->
 <div id="tools" class="container page">
-  <h1>🤖 Tools AI</h1>
-  <p>Kerja lebih cepat pakai AI</p>
+  <h2>🤖 Tools AI</h2>
+  <p>Kerja 10x lebih cepat</p>
 
-  <a class="btn" href="#">
+  <div class="btn" onclick="goLink('#')">
     🔥 Coba Sekarang
-  </a>
+  </div>
 
   <a class="back" onclick="showPage('home')">← Kembali</a>
 </div>
 
+<!-- NAVBAR -->
+<div class="navbar">
+  <div onclick="showPage('home')">Home</div>
+  <div onclick="showPage('ebook')">Ebook</div>
+  <div onclick="showPage('template')">Template</div>
+  <div onclick="showPage('tools')">Tools</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">🔥 1 orang baru saja beli!</div>
+
 <script>
 function showPage(page) {
-  document.querySelectorAll('.container').forEach(el => {
+  document.querySelectorAll('.page').forEach(el => {
     el.classList.remove('active');
   });
   document.getElementById(page).classList.add('active');
 }
+
+function goLink(url){
+  window.open(url, "_blank");
+}
+
+/* POPUP */
+setInterval(()=>{
+  let p = document.getElementById("popup");
+  p.style.display="block";
+  setTimeout(()=>{p.style.display="none";},3000);
+},7000);
 </script>
 
 </body>
